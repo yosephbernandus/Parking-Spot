@@ -1,4 +1,6 @@
 package mobile.android.parkingspotfinder.presentation
+
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
@@ -9,7 +11,6 @@ import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
 import com.google.maps.android.compose.GoogleMap
 import com.google.maps.android.compose.MapUiSettings
 
@@ -25,10 +26,10 @@ fun MapScreen(
         scaffoldState = scaffoldState,
         floatingActionButton = {
             FloatingActionButton(onClick = {
-                /*TODO*/
+                viewModel.onEvent(MapEvent.ToggleFalloutMap)
             }) {
                 Icon(
-                    ImageVector = if (viewModel.state.isFallOutMap)
+                    imageVector = if (viewModel.state.isFalloutMap)
                     {
                         Icons.Default.ToggleOff
                     } else Icons.Default.ToggleOn,
